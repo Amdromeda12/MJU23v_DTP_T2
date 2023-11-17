@@ -54,8 +54,7 @@ namespace MJU23v_DTP_T2
                 }
                 else if (command == "hjälp")
                 {
-                    Console.WriteLine("hjälp           - skriv ut den här hjälpen");
-                    Console.WriteLine("sluta           - avsluta programmet");
+                    printHelp();
                 }
                 else if (command == "ladda")
                 {
@@ -121,6 +120,13 @@ namespace MJU23v_DTP_T2
                     Console.WriteLine($"Okänt kommando: '{command}'");
                 }
             } while (true);
+        }
+
+        private static void printHelp()
+        {
+            Console.WriteLine("hjälp           - skriv ut den här hjälpen");
+            Console.WriteLine("sluta           - avsluta programmet");
+            //TODO: lägg in alla kommandos som saknas
         }
 
         private static void AddtoList(string filename)
