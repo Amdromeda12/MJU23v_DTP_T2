@@ -11,15 +11,6 @@ namespace MJU23v_DTP_T2
         class Link
         {
             public string category, group, name, descr, link;
-            public Link(string category, string group, string name, string descr, string link)
-            {
-                this.category = category;
-                this.group = group;
-                this.name = name;
-                this.descr = descr;
-                this.link = link;
-            }
-
             public Link(string line)
             {
                 string[] part = line.Split('|');
@@ -49,10 +40,7 @@ namespace MJU23v_DTP_T2
         static void Main(string[] args)
         {
             string filename = @"..\..\..\links\links.lis";
-            using (StreamReader sr = new StreamReader(filename))
-            {
-                AddtoList(sr);
-            }
+            AddtoList(filename);
             Console.WriteLine("Välkommen till länklistan! Skriv 'hjälp' för hjälp!");
             do
             {
@@ -76,10 +64,7 @@ namespace MJU23v_DTP_T2
                         filename = $@"..\..\..\links\{arg[1]}";
                     }
                     links = new List<Link>();
-                    using (StreamReader sr = new StreamReader(filename))
-                    {
-                        AddtoList(sr);
-                    }
+                    AddtoList(filename);
                 }
                 else if (command == "lista")
                 {
@@ -99,9 +84,9 @@ namespace MJU23v_DTP_T2
                     Console.Write("  ange beskrivning: ");
                     string descr = Console.ReadLine();
                     Console.Write("  ange länk: ");
-                    string link = Console.ReadLine();
-                    Link newLink = new Link(category, group, name, descr, link);
-                    links.Add(newLink);
+                    string line = Console.ReadLine();
+                    Link L = new Link(line);
+                    links.Add(L);
                 }
                 else if (command == "spara")
                 {
@@ -149,17 +134,19 @@ namespace MJU23v_DTP_T2
             } while (true);
         }
 
-        private static void AddtoList(StreamReader sr)
+        private static void AddtoList(string filename)
         {
-            int i = 0;
-            string line = sr.ReadLine();
-            while (line != null)
+            using (StreamReader sr = new StreamReader(filename))
             {
-                Console.WriteLine(line);
-                Link L = new Link(line);
-                L.Print(i++);
-                links.Add(L);
-                line = sr.ReadLine();
+                int i = 0;
+                string line = sr.ReadLine();
+                while (line != null)
+                {
+                    Console.WriteLine(line);
+                    Link L = new Link(line);
+                    links.Add(L);
+                    line = sr.ReadLine();
+                }
             }
         }
     }
