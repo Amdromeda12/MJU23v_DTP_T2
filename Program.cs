@@ -63,7 +63,6 @@ namespace MJU23v_DTP_T2
                     {
                         filename = $@"..\..\..\links\{arg[1]}";
                     }
-                    links = new List<Link>();
                     AddtoList(filename);
                 }
                 else if (command == "lista")
@@ -74,6 +73,7 @@ namespace MJU23v_DTP_T2
                 }
                 else if (command == "ny")
                 {
+                    
                     Console.WriteLine("Skapa en ny länk:");
                     Console.Write("  ange kategori: ");
                     string category = Console.ReadLine();
@@ -94,13 +94,7 @@ namespace MJU23v_DTP_T2
                     {
                         filename = $@"..\..\..\links\{arg[1]}";
                     }
-                    using (StreamWriter sr = new StreamWriter(filename))
-                    {
-                        foreach(Link L in links)
-                        {
-                            sr.WriteLine(L.ToString());
-                        }
-                    }
+                    AddtoList(filename);
                 }
                 else if (command == "ta")
                 {
