@@ -22,7 +22,7 @@ namespace MJU23v_DTP_T2
             }
             public void Print(int i)
             {
-                Console.WriteLine($"|{i,-2}|{category,-10}|{group,-10}|{name,-20}|{descr,-40}|");
+                Console.WriteLine($"|{i,-2}|{category,-10}|{group,-10}|{name,-20}|{descr,-40}| {link, -30}");
             }
             public void OpenLink()
             {
@@ -30,7 +30,7 @@ namespace MJU23v_DTP_T2
                 application.StartInfo.UseShellExecute = true;
                 application.StartInfo.FileName = link;
                 application.Start();
-                // application.WaitForExit();
+                application.WaitForExit();
             }
             public string ToString()
             {
@@ -115,7 +115,7 @@ namespace MJU23v_DTP_T2
                     {
                         foreach (Link L in links)
                         {
-                            if (L.group == arg[2])
+                            if (L.link == arg[2])
                             {
                                 L.OpenLink();
                             }
@@ -129,7 +129,7 @@ namespace MJU23v_DTP_T2
                 }
                 else
                 {
-                    Console.WriteLine("Okänt kommando: '{command}'");
+                    Console.WriteLine($"Okänt kommando: '{command}'");
                 }
             } while (true);
         }
