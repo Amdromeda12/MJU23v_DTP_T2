@@ -51,16 +51,7 @@ namespace MJU23v_DTP_T2
             string filename = @"..\..\..\links\links.lis";
             using (StreamReader sr = new StreamReader(filename))
             {
-                int i = 0;
-                string line = sr.ReadLine();
-                while (line != null)
-                {
-                    Console.WriteLine(line);
-                    Link L = new Link(line);
-                    L.Print(i++);
-                    links.Add(L);
-                    line = sr.ReadLine();
-                }
+                AddtoList(sr);
             }
             Console.WriteLine("Välkommen till länklistan! Skriv 'hjälp' för hjälp!");
             do
@@ -87,15 +78,7 @@ namespace MJU23v_DTP_T2
                     links = new List<Link>();
                     using (StreamReader sr = new StreamReader(filename))
                     {
-                        int i = 0;
-                        string line = sr.ReadLine();
-                        while (line != null)
-                        {
-                            Console.WriteLine(line);
-                            Link L = new Link(line);
-                            links.Add(L);
-                            line = sr.ReadLine();
-                        }
+                        AddtoList(sr);
                     }
                 }
                 else if (command == "lista")
@@ -164,6 +147,20 @@ namespace MJU23v_DTP_T2
                     Console.WriteLine("Okänt kommando: '{command}'");
                 }
             } while (true);
+        }
+
+        private static void AddtoList(StreamReader sr)
+        {
+            int i = 0;
+            string line = sr.ReadLine();
+            while (line != null)
+            {
+                Console.WriteLine(line);
+                Link L = new Link(line);
+                L.Print(i++);
+                links.Add(L);
+                line = sr.ReadLine();
+            }
         }
     }
 }
