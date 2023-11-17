@@ -111,7 +111,7 @@ namespace MJU23v_DTP_T2
                 }
                 else if (command == "öppna")
                 {
-                    if (arg[1] == "grupp")
+                    if (arg[1] == "länk")
                     {
                         foreach (Link L in links)
                         {
@@ -120,11 +120,6 @@ namespace MJU23v_DTP_T2
                                 L.OpenLink();
                             }
                         }
-                    }
-                    else if (arg[1] == "länk")
-                    {
-                        int ix = Int32.Parse(arg[2]);
-                        links[ix].OpenLink();
                     }
                 }
                 else
