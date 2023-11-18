@@ -126,9 +126,13 @@ namespace MJU23v_DTP_T2
 
         private static void printHelp()
         {
-            Console.WriteLine("hjälp           - skriv ut den här hjälpen");
-            Console.WriteLine("sluta           - avsluta programmet");
-            //FIXME: lägg in alla kommandos som saknas
+            Console.WriteLine("hjälp                     - skriv ut den här hjälpen");
+            Console.WriteLine("ladda 'filnamn'           - sparar innehållet i listan");
+            Console.WriteLine("lista                     - visar sparat innehåll i listan");
+            Console.WriteLine("ny                        - skapar en ny länk i listan");
+            Console.WriteLine("ta bort 'länknamn'        - tar bort en länk i listan");
+            Console.WriteLine("öppna länk 'länknamn'     - öppnar den valda länken");
+            Console.WriteLine("sluta                     - avsluta programmet");
         }
 
         private static void AddtoList(string filename)
