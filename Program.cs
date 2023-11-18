@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO.Enumeration;
+using System.Linq.Expressions;
 using System.Net.Http.Headers;
 using System.Xml.Linq;
 
@@ -61,7 +62,7 @@ namespace MJU23v_DTP_T2
                 {
                     try
                     {
-                        if (Inputs.Length == 2)
+                        if (Inputs.Length == 2) //FIXME: Fel text format i ladd filen ger en "System.IndexOutOfRangeException"
                         {
                             filename = $@"..\..\..\links\{Inputs[1]}";
                         }
@@ -113,15 +114,22 @@ namespace MJU23v_DTP_T2
                 }
                 else if (command == "öppna")
                 {
-                    if (Inputs[1] == "länk")
+                    try
                     {
-                        foreach (Link L in links)
+                        if (Inputs[1] == "länk")
                         {
-                            if (L.link == Inputs[2])
+                            foreach (Link L in links)
                             {
-                                L.OpenLink();
+                                if (L.link == Inputs[2])
+                                {
+                                    L.OpenLink();
+                                }
                             }
                         }
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                        Console.WriteLine($"Var vänligen att skriva vad du vill öppna");
                     }
                 }
                 else
@@ -156,7 +164,6 @@ namespace MJU23v_DTP_T2
                 string line = sr.ReadLine();
                 while (line != null)
                 {
-                    Console.WriteLine(line);
                     Link L = new Link(line);
                     links.Add(L);
                     line = sr.ReadLine();
