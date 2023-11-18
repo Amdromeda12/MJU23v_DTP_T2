@@ -59,12 +59,19 @@ namespace MJU23v_DTP_T2
                 }
                 else if (command == "ladda")
                 {
-                    if (Inputs.Length == 2)
+                    try
                     {
-                        filename = $@"..\..\..\links\{Inputs[1]}";
+                        if (Inputs.Length == 2)
+                        {
+                            filename = $@"..\..\..\links\{Inputs[1]}";
+                        }
+                        AddtoList(filename);
                     }
-                    AddtoList(filename);
-                }   
+                    catch(FileNotFoundException)
+                    {
+                        Console.WriteLine($"Gick ej att hitta fil '{Inputs[1]}'!");
+                    }
+                }
                 else if (command == "lista")
                 {
                     int i = 0;
