@@ -109,7 +109,7 @@ namespace MJU23v_DTP_T2
                     }
                     catch(IndexOutOfRangeException)
                     {
-                        Console.WriteLine($"Okänt kommando: '{command}'");
+                        Console.WriteLine($"Ange vad som ska ta bort");
                     }
                 }
                 else if (command == "öppna")
@@ -123,7 +123,7 @@ namespace MJU23v_DTP_T2
                                 if (L.link == Inputs[2])
                                 {
                                     L.OpenLink();
-                                }
+                                }//FIXME: exception om man försöker öppna en länk som är sparad men inte finns
                             }
                         }
                     }
