@@ -82,14 +82,6 @@ namespace MJU23v_DTP_T2
                     Link newLink = new Link($"{category}|{group}|{name}|{descr}|{link}");
                     links.Add(newLink);
                 }
-                else if (command == "spara")
-                {
-                    if (Inputs.Length == 2)
-                    {
-                        filename = $@"..\..\..\links\{Inputs[1]}";
-                    }
-                    AddtoList(filename);
-                }
                 else if (command == "ta")
                 {
                     if (Inputs[1] == "bort")
