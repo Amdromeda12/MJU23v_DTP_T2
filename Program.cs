@@ -91,17 +91,24 @@ namespace MJU23v_DTP_T2
                 }
                 else if (command == "ta")
                 {
-                    if (Inputs[1] == "bort")
+                    try
                     {
-                        for (int i = links.Count - 1; i >= 0; i--)
+                        if (Inputs[1] == "bort")
                         {
-                            Link L = links[i];
-                            if (L.link == Inputs[2])
+                            for (int i = links.Count - 1; i >= 0; i--)
                             {
-                                links.RemoveAt(i);
-                                Console.WriteLine("Gaming");
+                                Link L = links[i];
+                                if (L.link == Inputs[2])
+                                {
+                                    links.RemoveAt(i);
+                                    Console.WriteLine("Gaming");
+                                }
                             }
                         }
+                    }
+                    catch(IndexOutOfRangeException)
+                    {
+                        Console.WriteLine($"Okänt kommando: '{command}'");
                     }
                 }
                 else if (command == "öppna")
